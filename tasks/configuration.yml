@@ -38,3 +38,12 @@
   notify:
     - Restart Neutron server
     - Restart Neutron plugin OpenvSwitch agent
+
+- name: Ensure plugin.ini points to the right config file
+  file:
+    src: plugins/ml2/ml2_conf.ini
+    dest: /etc/neutron/plugin.ini
+    state: link
+  notify:
+    - Restart Neutron server
+    - Restart Neutron plugin OpenvSwitch agent
